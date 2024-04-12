@@ -1,5 +1,5 @@
-﻿using BaseApi.WebApi.Features.Orders.Entitie;
-using BaseApi.WebApi.Features.ServiceLayer.Dto;
+﻿using OrderPurchase.WebApi.Features.Orders.Entitie;
+using OrderPurchase.WebApi.Features.ServiceLayer.Dto;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -9,7 +9,7 @@ using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.ServiceLayer
+namespace OrderPurchase.WebApi.Features.ServiceLayer
 {
     public class OrderPurchaseServices
     {

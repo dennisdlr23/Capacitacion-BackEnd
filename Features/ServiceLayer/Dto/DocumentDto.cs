@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.ServiceLayer.Dto
+namespace OrderPurchase.WebApi.Features.ServiceLayer.Dto
 {
     public class DocumentDto
     {

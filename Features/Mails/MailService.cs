@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using BaseApi.WebApi.Features.Common.Dto;
+using OrderPurchase.WebApi.Features.Common.Dto;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using System.Linq;
-using BaseApi.WebApi.Features.Mails.Dto;
+using OrderPurchase.WebApi.Features.Mails.Dto;
 
-namespace BaseApi.WebApi.Features.Mails
+namespace OrderPurchase.WebApi.Features.Mails
 {
     public class MailService
     {

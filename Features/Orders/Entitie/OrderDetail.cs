@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.Orders.Entitie
+namespace OrderPurchase.WebApi.Features.Orders.Entitie
 {
     public class OrderDetail
     {

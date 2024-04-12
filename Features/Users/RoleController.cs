@@ -1,9 +1,9 @@
 ﻿using System;
-using BaseApi.WebApi.Features.Users.Dto;
+using OrderPurchase.WebApi.Features.Users.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BaseApi.WebApi.Features.Users
+namespace OrderPurchase.WebApi.Features.Users
 {
     [ApiController]
     [Route("[controller]")]

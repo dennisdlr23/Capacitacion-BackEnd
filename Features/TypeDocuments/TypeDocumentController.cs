@@ -1,5 +1,5 @@
-﻿using BaseApi.WebApi.Features.TypeDocuments.Entities;
-using BaseApi.WebApi.Features.TypeDocuments.Services;
+﻿using OrderPurchase.WebApi.Features.TypeDocuments.Entities;
+using OrderPurchase.WebApi.Features.TypeDocuments.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.TypeDocuments
+namespace OrderPurchase.WebApi.Features.TypeDocuments
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -63,5 +63,33 @@ namespace BaseApi.WebApi.Features.TypeDocuments
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPut("{userId}")]
+        public IActionResult Edit(TypeDocument request, int userId)
+        {
+            try
+            {
+                var result = _services.Edit(request, userId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var result = _services.Delete(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
     }
 }

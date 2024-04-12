@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BaseApi.WebApi.Helpers
+namespace OrderPurchase.WebApi.Helpers
 {
     public enum TypePermissionEnum : int
     {

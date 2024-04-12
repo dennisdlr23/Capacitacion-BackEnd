@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BaseApi.WebApi.Features.Common.Entities
+namespace OrderPurchase.WebApi.Features.Common.Entities
 {
     public class Theme
     {

@@ -1,15 +1,15 @@
-﻿using BaseApi.WebApi.Features.Users.Entities;
-using BaseApi.WebApi.Features.Common.Entities;
+﻿using OrderPurchase.WebApi.Features.Users.Entities;
+using OrderPurchase.WebApi.Features.Common.Entities;
 using Microsoft.EntityFrameworkCore;
-using BaseApi.WebApi.Features.Common.Dto;
-using BaseApi.WebApi.Features.TypeDocuments.Entities;
-using BaseApi.WebApi.Features.Orders.Entitie;
+using OrderPurchase.WebApi.Features.Common.Dto;
+using OrderPurchase.WebApi.Features.TypeDocuments.Entities;
+using OrderPurchase.WebApi.Features.Orders.Entitie;
 
-namespace BaseApi.WebApi.Infraestructure
+namespace OrderPurchase.WebApi.Infraestructure
 {
-    public class BaseApiDbContext : DbContext
+    public class OrderPurchaseDbContext : DbContext
     {
-        public BaseApiDbContext(DbContextOptions<BaseApiDbContext> options) : base(options)
+        public OrderPurchaseDbContext(DbContextOptions<OrderPurchaseDbContext> options) : base(options)
         {
         }
         public DbSet<User> User { get; set; }

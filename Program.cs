@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace BaseApi.WebApi
+namespace OrderPurchase.WebApi
 {
     public class Program
     {

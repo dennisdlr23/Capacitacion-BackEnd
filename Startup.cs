@@ -1,9 +1,9 @@
-using BaseApi.WebApi.Features.Auth;
-using BaseApi.WebApi.Features.Common;
-using BaseApi.WebApi.Features.Users;
-using BaseApi.WebApi.Features.Users.Services;
-using BaseApi.WebApi.Helpers;
-using BaseApi.WebApi.Infraestructure;
+using OrderPurchase.WebApi.Features.Auth;
+using OrderPurchase.WebApi.Features.Common;
+using OrderPurchase.WebApi.Features.Users;
+using OrderPurchase.WebApi.Features.Users.Services;
+using OrderPurchase.WebApi.Helpers;
+using OrderPurchase.WebApi.Infraestructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +13,12 @@ using Microsoft.Extensions.Hosting;
 using System;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using BaseApi.WebApi.Features.ServiceLayer;
-using BaseApi.WebApi.Features.TypeDocuments.Services;
-using BaseApi.WebApi.Features.DataMaster.Services;
-using BaseApi.WebApi.Features.Orders.Service;
+using OrderPurchase.WebApi.Features.ServiceLayer;
+using OrderPurchase.WebApi.Features.TypeDocuments.Services;
+using OrderPurchase.WebApi.Features.DataMaster.Services;
+using OrderPurchase.WebApi.Features.Orders.Service;
 
-namespace BaseApi.WebApi
+namespace OrderPurchase.WebApi
 {
     public class Startup
     {
@@ -34,13 +34,13 @@ namespace BaseApi.WebApi
             // Configuración de Swagger para documentación de la API
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BaseApi.WebApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "OrderPurchase.WebApi", Version = "v1" });
             });
 
             // Configuración del contexto de base de datos
-            services.AddDbContext<BaseApiDbContext>(
+            services.AddDbContext<OrderPurchaseDbContext>(
                 dbContextOptions => dbContextOptions
-                    .UseSqlServer(Configuration.GetConnectionString("dbpurchase"))
+                    .UseSqlServer(Configuration.GetConnectionString("dbOrderPurchase"))
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors()
             );
@@ -73,7 +73,7 @@ namespace BaseApi.WebApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BaseApiApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OrderPurchaseApi v1"));
             }
 
             app.UseHttpsRedirection();
@@ -87,7 +87,7 @@ namespace BaseApi.WebApi
               .AllowAnyHeader());
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BaseApi.WebApi v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "OrderPurchase.WebApi v1"));
             app.UseAuthentication();
             app.UseAuthorization();
        

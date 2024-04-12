@@ -1,12 +1,12 @@
 ﻿using System;
-using BaseApi.WebApi.Features.Common.Entities;
-using BaseApi.WebApi.Helpers;
+using OrderPurchase.WebApi.Features.Common.Entities;
+using OrderPurchase.WebApi.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 
-namespace BaseApi.WebApi.Features.Common
+namespace OrderPurchase.WebApi.Features.Common
 {
     [Route("api/[controller]")]
     [ApiController]

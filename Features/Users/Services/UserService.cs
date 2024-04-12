@@ -1,29 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DBaseApi.Features.Auth.Dto;
-using BaseApi.WebApi.Features.Users.Entities;
-using BaseApi.WebApi.Features.Common.Entities;
-using BaseApi.WebApi.Infraestructure;
+using DOrderPurchase.Features.Auth.Dto;
+using OrderPurchase.WebApi.Features.Users.Entities;
+using OrderPurchase.WebApi.Features.Common.Entities;
+using OrderPurchase.WebApi.Infraestructure;
 using Microsoft.Extensions.Configuration;
-using BaseApi.WebApi.Helpers;
+using OrderPurchase.WebApi.Helpers;
 using Sap.Data.Hana;
-using BaseApi.WebApi.Features.ServiceLayer;
-using BaseApi.WebApi.Features.ServiceLayer.Dto;
+using OrderPurchase.WebApi.Features.ServiceLayer;
+using OrderPurchase.WebApi.Features.ServiceLayer.Dto;
 
-namespace BaseApi.WebApi.Features.Users
+namespace OrderPurchase.WebApi.Features.Users
 {
     public class UserService
     {
-        private readonly BaseApiDbContext _baseApiDbContext;
+        private readonly OrderPurchaseDbContext _OrderPurchaseDbContext;
         private readonly IConfiguration _configuration;
         private readonly HanaDbContext _hanaDbContext;
         private readonly AuthSapServices _authSapService;
         private readonly OrderPurchaseServices _orderPurchaseServices;
 
-        public UserService(BaseApiDbContext baseApiDbContext, IConfiguration configuration, HanaDbContext hanaDbContext, AuthSapServices authSapService, OrderPurchaseServices orderPurchaseServices)
+        public UserService(OrderPurchaseDbContext OrderPurchaseDbContext, IConfiguration configuration, HanaDbContext hanaDbContext, AuthSapServices authSapService, OrderPurchaseServices orderPurchaseServices)
         {
-            _baseApiDbContext = baseApiDbContext;
+            _OrderPurchaseDbContext = OrderPurchaseDbContext;
             _configuration = configuration;
             _hanaDbContext = hanaDbContext;
             _authSapService = authSapService;
@@ -32,9 +32,9 @@ namespace BaseApi.WebApi.Features.Users
 
         public List<UserDto> Get()
         {
-            var users = _baseApiDbContext.User.ToList();
-            var themes = _baseApiDbContext.Theme.ToList();
-            var roles = _baseApiDbContext.Role.ToList();
+            var users = _OrderPurchaseDbContext.User.ToList();
+            var themes = _OrderPurchaseDbContext.Theme.ToList();
+            var roles = _OrderPurchaseDbContext.Role.ToList();
 
             var result = (from u in users
                           join r in roles on u.RoleId equals r.RoleId into userRole
@@ -66,8 +66,8 @@ namespace BaseApi.WebApi.Features.Users
             user.Active = true;
             user.Password = Helper.EncryptPassword(user.Password.Trim(), _configuration);
             user.UserName = user.UserName.Trim().ToLower();
-            _baseApiDbContext.User.Add(user);
-            _baseApiDbContext.SaveChanges();
+            _OrderPurchaseDbContext.User.Add(user);
+            _OrderPurchaseDbContext.SaveChanges();
             return Get();
         }
 
@@ -80,22 +80,22 @@ namespace BaseApi.WebApi.Features.Users
                 if (user.Password.Length < 8) throw new Exception("Debe ingresar una contraseña que contenga al menos 8 caracteres");
                 user.Password = Helper.EncryptPassword(user.Password.Trim(), _configuration);
             }
-            var currentUser = _baseApiDbContext.User.Where(x => x.UserId == user.UserId).FirstOrDefault();
+            var currentUser = _OrderPurchaseDbContext.User.Where(x => x.UserId == user.UserId).FirstOrDefault();
             currentUser.Name = user.Name;
             currentUser.Email = user.Email;
             currentUser.RoleId = user.RoleId;
             currentUser.ThemeId = user.ThemeId;
             currentUser.Active = user.Active;
 
-            _baseApiDbContext.User.Update(currentUser);
+            _OrderPurchaseDbContext.User.Update(currentUser);
             currentUser.Password = user.Password;
-            _baseApiDbContext.SaveChanges();
+            _OrderPurchaseDbContext.SaveChanges();
             return Get();
         }
 
         public List<Theme> GetThemes()
         {
-            var themes = _baseApiDbContext.Theme.ToList();
+            var themes = _OrderPurchaseDbContext.Theme.ToList();
             return themes;
         }
 

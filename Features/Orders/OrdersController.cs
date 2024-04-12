@@ -1,7 +1,7 @@
-﻿using BaseApi.WebApi.Features.Orders.Entitie;
-using BaseApi.WebApi.Features.Orders.Service;
-using BaseApi.WebApi.Features.ServiceLayer;
-using BaseApi.WebApi.Features.ServiceLayer.Dto;
+﻿using OrderPurchase.WebApi.Features.Orders.Entitie;
+using OrderPurchase.WebApi.Features.Orders.Service;
+using OrderPurchase.WebApi.Features.ServiceLayer;
+using OrderPurchase.WebApi.Features.ServiceLayer.Dto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.Orders
+namespace OrderPurchase.WebApi.Features.Orders
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -32,6 +32,20 @@ namespace BaseApi.WebApi.Features.Orders
                 return Ok(result);
             }
             catch(Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [HttpGet("GetOrderByDate{fro}/{to}")]
+        public IActionResult GetOrderByDate(DateTime fro, DateTime to)
+        {
+            try
+            {
+                var result = _service.GetOrderByDate(fro, to);
+                return Ok(result);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(new { message = ex.Message });
             }

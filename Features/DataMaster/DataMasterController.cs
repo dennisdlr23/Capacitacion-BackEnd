@@ -1,4 +1,4 @@
-﻿using BaseApi.WebApi.Features.DataMaster.Services;
+﻿using OrderPurchase.WebApi.Features.DataMaster.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.DataMaster
+namespace OrderPurchase.WebApi.Features.DataMaster
 {
     [Route("api/[controller]")]
     [ApiController]

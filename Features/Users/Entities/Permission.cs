@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BaseApi.WebApi.Features.Users.Entities
+namespace OrderPurchase.WebApi.Features.Users.Entities
 {
     public class Permission
     {

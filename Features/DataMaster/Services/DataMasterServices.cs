@@ -1,12 +1,12 @@
-﻿using BaseApi.WebApi.Features.DataMaster.Dto;
-using BaseApi.WebApi.Infraestructure;
+﻿using OrderPurchase.WebApi.Features.DataMaster.Dto;
+using OrderPurchase.WebApi.Infraestructure;
 using Sap.Data.Hana;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.DataMaster.Services
+namespace OrderPurchase.WebApi.Features.DataMaster.Services
 {
     public class DataMasterServices
     {

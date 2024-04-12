@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>e88d8350-1eb1-486e-93f3-52e317d6e36d</UserSecretsId>
-    <StartupObject>BaseApi.WebApi.Program</StartupObject>
-    <AssemblyName>BaseApi.WebApi</AssemblyName>
+    <StartupObject>OrderPurchase.WebApi.Program</StartupObject>
+    <AssemblyName>OrderPurchase.WebApi</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Control' " />

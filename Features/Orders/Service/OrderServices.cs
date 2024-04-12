@@ -1,21 +1,21 @@
-﻿using BaseApi.WebApi.Features.Orders.Dto;
-using BaseApi.WebApi.Features.Orders.Entitie;
-using BaseApi.WebApi.Features.ServiceLayer;
-using BaseApi.WebApi.Features.ServiceLayer.Dto;
-using BaseApi.WebApi.Infraestructure;
+﻿using OrderPurchase.WebApi.Features.Orders.Dto;
+using OrderPurchase.WebApi.Features.Orders.Entitie;
+using OrderPurchase.WebApi.Features.ServiceLayer;
+using OrderPurchase.WebApi.Features.ServiceLayer.Dto;
+using OrderPurchase.WebApi.Infraestructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.Orders.Service
+namespace OrderPurchase.WebApi.Features.Orders.Service
 {
     public class OrderServices
     {
-        private readonly BaseApiDbContext _context;
+        private readonly OrderPurchaseDbContext _context;
         private readonly OrderPurchaseServices _serviceSap;
 
-        public OrderServices(BaseApiDbContext context, OrderPurchaseServices serviceSap)
+        public OrderServices(OrderPurchaseDbContext context, OrderPurchaseServices serviceSap)
         {
             _context = context;
             _serviceSap = serviceSap;
@@ -25,6 +25,26 @@ namespace BaseApi.WebApi.Features.Orders.Service
         {
             var result = (from o in _context.Order
                           join u in _context.User on o.CreatedBy equals u.UserId
+                          select new OrderDto
+                          {
+                              Id = o.Id,
+                              DocNum = o.DocNum,
+                              DocEntry = o.DocEntry,
+                              CardCode = o.CardCode,
+                              DocDate = o.DocDate,
+                              Reference = o.Reference,
+                              CreatedBy = o.CreatedBy,
+                              CreatedByName = u.Name,
+                              Detail = (_context.OrderDetail.Where(x => x.IdOrder == o.Id).ToList())
+                          }).ToList();
+            return result;
+        }
+
+        public List<OrderDto> GetOrderByDate(DateTime fro, DateTime to)
+        {
+            var result = (from o in _context.Order
+                          join u in _context.User on o.CreatedBy equals u.UserId
+                          where o.DocDate.Date >= fro.Date && o.DocDate <= to.Date
                           select new OrderDto
                           {
                               Id = o.Id,

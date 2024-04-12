@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BaseApi.WebApi.Features.Orders.Entitie
+namespace OrderPurchase.WebApi.Features.Orders.Entitie
 {
 	public class Order
 	{

@@ -1,8 +1,8 @@
-﻿using DBaseApi.Features.Auth.Dto;
+﻿using DOrderPurchase.Features.Auth.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace BaseApi.WebApi.Features.Auth
+namespace OrderPurchase.WebApi.Features.Auth
 {
     [ApiController]
     [Route("[controller]")]

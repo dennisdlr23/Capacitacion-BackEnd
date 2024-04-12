@@ -1,5 +1,5 @@
 ﻿using System;
-namespace BaseApi.WebApi.Features.Mails.Dto
+namespace OrderPurchase.WebApi.Features.Mails.Dto
 {
     public class AttachmentEmail
     {
